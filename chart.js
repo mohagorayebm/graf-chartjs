@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const ctx = document.getElementById('myChart').getContext('2d');
+    const canvas = document.getElementById('myChart');
+  
+    // Si ya existe una instancia del gráfico, destrúyela
+    if (window.myChart instanceof Chart) {
+      window.myChart.destroy();
+    }
     
-    new Chart(ctx, {
+    const ctx = canvas.getContext('2d');
+  
+    // Crea el gráfico y lo asigna a una variable global
+    window.myChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: [
